@@ -17,6 +17,7 @@ pipeline {
             steps {
 		sh ''' echo $(IMAGE_TAG}I
 		'''
+		}
 
 	}
         
