@@ -15,7 +15,7 @@ pipeline {
 	
 	stage('show image tag')  {
             steps {
-		sh " echo image tag in docker hube is : ${IMAGE_TAG} "	
+		sh " echo image tag in docker hub is : ${IMAGE_TAG} "	
 		
 		}
 
