@@ -15,8 +15,8 @@ pipeline {
 	
 	stage('show image tag')  {
             steps {
-		sh ''' echo $IMAGE_TAG
-		'''
+		sh " echo ${IMAGE_TAG} "	
+		
 		}
 
 	}
