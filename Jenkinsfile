@@ -6,20 +6,20 @@ pipeline {
     environment {
 
         IMAGE_NAME = "ohadd306/fastapi-app"
-        IMAGE_TAG  = "${IMAGE_TAG}"
+        IMAGE_TAG  = "${BUILD_NUMBER}"
 
     }
 
 
     stages {
 	
-//	stage('show image tag')  {
-  //          steps {
-//		sh " echo ${IMAGE_TAG} "	
-//		
-//		}
-//
-//	}
+	stage('show image tag')  {
+            steps {
+		sh " echo ${IMAGE_TAG} "	
+		
+		}
+
+	}
         
 
 
