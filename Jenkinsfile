@@ -5,8 +5,8 @@ pipeline {
 
     environment {
 
-        IMAGE_NAME = "ohadd83/fastapi-app"
-        IMAGE_TAG  = "latest"
+        IMAGE_NAME = "ohadd306/fastapi-app"
+        IMAGE_TAG  = "${IMAGE_TAG}"
 
     }
 
@@ -52,45 +52,64 @@ pipeline {
 
 
 
-        stage('Build Docker Image') {
+ //       stage('Build Docker Image') {
 
+   //         steps {
+
+     //           sh '''
+       //         docker build \
+         //       -t ${IMAGE_NAME}:${IMAGE_TAG} .
+           //     '''
+
+    //        }
+      //  }
+
+
+
+//        stage('Login Docker Hub') {
+
+  //          steps {
+
+    //            withCredentials([
+      //              usernamePassword(
+        //            credentialsId: 'dockerhub-creds',
+          //          usernameVariable: 'DOCKER_USER',
+            //        passwordVariable: 'DOCKER_PASS'
+              //      )
+             //   ]) {
+
+               //     sh '''
+                 //   echo $DOCKER_PASS | docker login \
+                   // -u $DOCKER_USER \
+             //       --password-stdin
+               //     '''
+
+              //  }
+
+          //  }
+
+      //  }
+
+        stage('Build Image') {
             steps {
-
-                sh '''
-                docker build \
-                -t ${IMAGE_NAME}:${IMAGE_TAG} .
-                '''
-
+                sh "docker build -t ${IMAGE_NAME}:${IMAGE_TAG} ."
             }
         }
 
-
-
-        stage('Login Docker Hub') {
-
+        stage('Push Image') {
             steps {
-
-                withCredentials([
-                    usernamePassword(
+                withCredentials([usernamePassword(
                     credentialsId: 'dockerhub-creds',
                     usernameVariable: 'DOCKER_USER',
                     passwordVariable: 'DOCKER_PASS'
-                    )
-                ]) {
-
-                    sh '''
-                    echo $DOCKER_PASS | docker login \
-                    -u $DOCKER_USER \
-                    --password-stdin
-                    '''
-
+                )]) {
+                    sh """
+                        echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                        docker push ${IMAGE_NAME}:${IMAGE_TAG}
+                    """
                 }
-
             }
-
         }
-
-
 
         stage('Push Docker Image') {
 
