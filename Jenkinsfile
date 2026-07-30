@@ -14,15 +14,15 @@ pipeline {
     stages {
 
 
-        stage('Checkout') {
+//        stage('Checkout') {
+//
+//            steps {
+//
+  //              git branch: 'main',
+    //                url: 'https://github.com/your-user/python-fastapi-app.git'
 
-            steps {
-
-                git branch: 'main',
-                    url: 'https://github.com/your-user/python-fastapi-app.git'
-
-            }
-        }
+      //      }
+        //}
 
 
 
