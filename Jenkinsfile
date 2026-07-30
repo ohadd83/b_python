@@ -13,7 +13,7 @@ pipeline {
 
     stages {
 	
-	stage('show image tag')
+	stage('show image tag')  {
             steps {
 		sh ''' echo $(IMAGE_TAG}I
 		'''
