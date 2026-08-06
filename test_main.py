@@ -10,7 +10,7 @@ def test_root():
     response = client.get("/")
 
     assert response.status_code == 200
-    assert response.json()["message"] == "Hello from Jenkins CI/CD FastAPI application"
+    assert response.json()["message"] == "Hello from Jenkins CI/CD FastAPI application test num 1"
 
 
 

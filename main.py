@@ -6,7 +6,7 @@ app = FastAPI()
 @app.get("/")
 def root():
     return {
-        "message": "Hello from Jenkins CI/CD FastAPI application"
+        "message": "Hello from Jenkins CI/CD FastAPI application  test num 1"
     }
 
 
